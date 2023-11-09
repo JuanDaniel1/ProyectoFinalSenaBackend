@@ -1,6 +1,6 @@
 from django.db import models 
 import datetime
-
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
 class Producto(models.Model):
     productoName = models.CharField(max_length=200)
@@ -47,3 +47,4 @@ class VentaProducto(models.Model):
         indexes = [
                 models.Index(fields=['venta', 'producto',]),
             ]
+
