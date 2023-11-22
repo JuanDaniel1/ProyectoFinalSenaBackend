@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.models import Producto, Client, Venta, VentaProducto, Person
+from api.models import *
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 
@@ -9,22 +9,9 @@ class ProductoSerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ('created_at',)
 
-class ClientSerializer(serializers.ModelSerializer):
+class CategoriasSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Client
-        fields = '__all__'
-
-class VentaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Venta
-        fields = '__all__'
-        extra_kwargs = {
-            'fecha': {'read_only': True, 'required': False},
-            # 'fecha': {'read_only': True},
-        }        
-class VentaProductoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = VentaProducto
+        model = Categorias
         fields = '__all__'
 
 class PersonSerializer(serializers.ModelSerializer):

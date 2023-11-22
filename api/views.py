@@ -1,6 +1,6 @@
 from rest_framework import viewsets, permissions
-from api.models import Producto, Client, Venta, VentaProducto
-from api.serializers import ProductoSerializer, ClientSerializer, VentaSerializer, VentaProductoSerializer, UserSerializer
+from api.models import *
+from api.serializers import *
 from rest_framework import status,views, response
 from rest_framework import authentication
 from django.contrib.auth.models import User
@@ -15,21 +15,9 @@ class ProductoViewSet(viewsets.ModelViewSet):
     # authentication_classes = [authentication.BasicAuthentication]
     
 
-class ClientViewSet(viewsets.ModelViewSet):
-  queryset = Client.objects.all()  
-  permission_classes = [permissions.AllowAny]
-  serializer_class = ClientSerializer
-
-class VentaViewSet(viewsets.ModelViewSet):
-  queryset = Venta.objects.all()
-  permission_classes = [permissions.IsAuthenticated]
-  authentication_classes = [authentication.TokenAuthentication,]
-  serializer_class = VentaSerializer
-
-class VentaProductoViewSet(viewsets.ModelViewSet):
-  queryset = VentaProducto.objects.all()
-  permission_classes = [permissions.AllowAny]
-  serializer_class = VentaProductoSerializer
+class CategoriasViewSet(viewsets.ModelViewSet):
+    queryset = Categorias.objects.all()
+    serializer_class = CategoriasSerializer
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
